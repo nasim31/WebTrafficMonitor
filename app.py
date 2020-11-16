@@ -17,9 +17,6 @@ app.secret_key = os.urandom(24) #generates a secret key automatically
 
 # Load configuration from environment, with defaults
 app.config['DEBUG'] = True if os.getenv('DEBUG') == 'True' else False
-app.config['LISTEN_HOST'] = os.getenv('LISTEN_HOST', '0.0.0.0')
-app.config['LISTEN_PORT'] = int(os.getenv('LISTEN_PORT', '5000'))
-app.config['APP_URL'] = os.getenv('APP_URL', 'http://localhost:5000')  # must be https to avoid browser issues
 app.config['PUSHER_APP_ID'] = os.getenv('PUSHER_APP_ID')
 app.config['PUSHER_APP_KEY'] = os.getenv('PUSHER_APP_KEY')
 app.config['PUSHER_APP_SECRET'] = os.getenv('PUSHER_APP_SECRET')
