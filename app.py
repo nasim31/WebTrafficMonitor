@@ -16,19 +16,19 @@ app = Flask(__name__) #initialize a new flask application
 app.secret_key = os.urandom(24) #generates a secret key automatically
 
 # Load configuration from environment, with defaults
-app.config['DEBUG'] = True if os.getenv('DEBUG') == 'True' else False
-app.config['PUSHER_APP_ID'] = os.getenv('PUSHER_APP_ID')
-app.config['PUSHER_APP_KEY'] = os.getenv('PUSHER_APP_KEY')
-app.config['PUSHER_APP_SECRET'] = os.getenv('PUSHER_APP_SECRET')
-app.config['PUSHER_APP_CLUSTER'] = os.getenv('PUSHER_APP_CLUSTER')
+#app.config['DEBUG'] = True if os.getenv('DEBUG') == 'True' else False
+#app.config['PUSHER_APP_ID'] = os.getenv('PUSHER_APP_ID','1029927')
+#app.config['PUSHER_APP_KEY'] = os.getenv('PUSHER_APP_KEY','91abd63de00e546ce017')
+#app.config['PUSHER_APP_SECRET'] = os.getenv('PUSHER_APP_SECRET','36ac9fb3b49ccf8db385')
+#app.config['PUSHER_APP_CLUSTER'] = os.getenv('PUSHER_APP_CLUSTER','ap2')
 
 #configure pusher object
 #value of sensitive data is stored in local .bashrc file
 pusher = Pusher(
-app_id = os.environ.get('PUSHER_APP_ID'),
-key = os.environ.get('PUSHER_APP_KEY'),
-secret = os.environ.get('PUSHER_APP_SECRET'),
-cluster = os.environ.get('PUSHER_APP_CLUSTER'),
+app_id = os.environ.get('PUSHER_APP_ID','1029927'),
+key = os.environ.get('PUSHER_APP_KEY','91abd63de00e546ce017'),
+secret = os.environ.get('PUSHER_APP_SECRET','36ac9fb3b49ccf8db385'),
+cluster = os.environ.get('PUSHER_APP_CLUSTER','ap2'),
 ssl = True)
 
 #define routers and their handler functions:
@@ -134,4 +134,4 @@ def get_all_sessions():
 
     if __name__ == '__main__':
         main()
-        app.run(debug=True)   
+        app.run(host='0.0.0.0')
