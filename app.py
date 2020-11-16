@@ -15,13 +15,6 @@ from dbsetup import newConnection, newSession, updateCreateTable, allSessions, a
 app = Flask(__name__) #initialize a new flask application
 app.secret_key = os.urandom(24) #generates a secret key automatically
 
-# Load configuration from environment, with defaults
-#app.config['DEBUG'] = True if os.getenv('DEBUG') == 'True' else False
-#app.config['PUSHER_APP_ID'] = os.getenv('PUSHER_APP_ID','1029927')
-#app.config['PUSHER_APP_KEY'] = os.getenv('PUSHER_APP_KEY','91abd63de00e546ce017')
-#app.config['PUSHER_APP_SECRET'] = os.getenv('PUSHER_APP_SECRET','36ac9fb3b49ccf8db385')
-#app.config['PUSHER_APP_CLUSTER'] = os.getenv('PUSHER_APP_CLUSTER','ap2')
-
 #configure pusher object
 #value of sensitive data is stored in local .bashrc file
 pusher = Pusher(
@@ -134,4 +127,4 @@ def get_all_sessions():
 
     if __name__ == '__main__':
         main()
-        app.run(host='0.0.0.0')
+        app.run(debug=True)   
